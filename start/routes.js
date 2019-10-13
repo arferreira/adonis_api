@@ -17,8 +17,12 @@
 const Route = use("Route");
 
 Route.get("/", () => {
-  return { greeting: "Hello world in JSON" };
+  return { greeting: "Welcome to API adonis" };
 });
 
 Route.post("/users", "UserController.create");
 Route.post("/user/sign_in", "UserController.login");
+
+Route.resource("task", "TaskController")
+  .apiOnly()
+  .middleware("auth");
