@@ -26,3 +26,5 @@ Route.post("/user/sign_in", "UserController.login");
 Route.resource("task", "TaskController")
   .apiOnly()
   .middleware("auth");
+
+Route.post("/task/:id/file", "FileController.create").middleware("auth");

@@ -7,6 +7,10 @@ class Task extends Model {
   users() {
     return this.belongsTo("App/Models/User");
   }
+
+  files() {
+    return this.hasMany("App/Models/File");
+  }
 }
 
 module.exports = Task;
