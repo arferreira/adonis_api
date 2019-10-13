@@ -19,6 +19,11 @@ class FileController {
       if (!files.moveAll()) {
         return files.errors();
       }
+      await Promise.all(
+        files
+          .movedList()
+          .map(file => File.create({ task_id: task.id, path: file.fileName }))
+      );
     } catch (error) {
       return response.status(400).send({ error: "Error on upload file" });
     }
